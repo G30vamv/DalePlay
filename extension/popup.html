@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DalePlay</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" type="module"></script>
+</head>
+<body>
+  <header><span class="mark" aria-hidden="true">▶</span><h1>DalePlay</h1></header>
+  <main>
+    <section id="home">
+      <button id="create" class="primary">Crear sala</button>
+      <form id="join">
+        <label for="code">Código de invitación</label>
+        <div class="field">
+          <input id="code" placeholder="Pega el código" required maxlength="36" spellcheck="false" autocomplete="off">
+          <button type="submit">Unirme</button>
+        </div>
+      </form>
+    </section>
+    <section id="room" hidden>
+      <div class="room-meta"><strong id="role"></strong><span id="count"></span></div>
+      <button id="copy" class="primary" hidden>Copiar código</button>
+      <button id="leave">Salir de la sala</button>
+    </section>
+    <p id="status" aria-live="polite">Conecta el reproductor de esta pestaña a una sala.</p>
+  </main>
+</body>
+</html>

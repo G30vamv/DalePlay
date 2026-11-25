@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DalePlay · Reproductor de prueba</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#101015;color:#f7f4ff;font:16px system-ui,sans-serif;padding:24px}
+main{width:min(100%,600px);padding:clamp(24px,6vw,48px);background:#1b1926;border:1px solid #353044;border-radius:28px}
+strong{color:#c3acff}h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.04;margin:16px 0}p{color:#c8c1d6;line-height:1.55}
+audio{width:100%;margin:20px 0 12px}output{font-variant-numeric:tabular-nums;color:#c3acff}
+</style>
+</head>
+<body>
+<main>
+<strong>▶ DalePlay</strong>
+<h1>Reproductor de prueba</h1>
+<p>Abre esta página en ambos navegadores. Crea una sala desde la extensión, copia el código y úsalo para unirte desde el otro navegador.</p>
+<audio controls preload="auto" aria-label="Pista de prueba"></audio>
+<p>Posición <output>0.0 s</output></p>
+<p id="status" role="status">Cargando la pista…</p>
+</main>
+<script>
+const player = document.querySelector('audio');
+const status = document.querySelector('#status');
+fetch('/demo.wav').then(response => {
+  if (!response.ok) throw new Error();
+  return response.blob();
+}).then(blob => {
+  player.src = URL.createObjectURL(blob);
+  status.textContent = 'Pista de 90 segundos.';
+}).catch(() => { status.textContent = 'La pista no se pudo cargar.'; });
+setInterval(() => { document.querySelector('output').textContent = player.currentTime.toFixed(1) + ' s'; }, 100);
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "daleplay-browser-tests",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/sync.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.65.1"
+  }
+}

@@ -1,0 +1,38 @@
+name: Compatibilidad de DalePlay
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sincronizacion:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Preparar Rust
+        run: rustup default stable
+      - name: Compilar el servidor
+        run: cargo build --locked
+      - name: Instalar Playwright
+        run: npm ci --no-audit --no-fund
+      - name: Instalar Chromium en Linux
+        if: runner.os == 'Linux'
+        run: npx playwright install --with-deps --no-shell chromium
+      - name: Instalar Chromium en macOS y Windows
+        if: runner.os != 'Linux'
+        run: npx playwright install --no-shell chromium
+      - name: Probar sincronización en dos perfiles
+        run: npm test

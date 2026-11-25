@@ -1,0 +1,20 @@
+:root { color-scheme: dark; font: 14px system-ui, sans-serif; background: #121019; color: #f7f2ff; }
+* { box-sizing: border-box; }
+body { margin: 0; width: 340px; padding: 20px; }
+header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+h1 { font-size: 24px; letter-spacing: -.04em; margin: 0; }
+.mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #1c1033; background: #bd9cff; }
+section { padding: 14px; border-radius: 16px; border: 1px solid #3b324e; background: #1d1928; }
+section > button { width: 100%; }
+button, input { min-height: 40px; border-radius: 10px; border: 1px solid #504468; font: inherit; }
+button { background: #2b233b; color: #fff; font-weight: 650; padding: 0 12px; cursor: pointer; }
+button:hover { filter: brightness(1.12); }
+button:focus-visible, input:focus-visible { outline: 2px solid #cfb8ff; outline-offset: 2px; }
+button:disabled { opacity: .6; cursor: wait; }
+.primary { background: #bd9cff; border-color: #bd9cff; color: #1c1033; }
+form, #leave { margin-top: 14px; }
+label { display: block; margin-bottom: 7px; color: #d1c6e1; }
+.field, .room-meta { display: flex; gap: 8px; align-items: center; }
+.room-meta { justify-content: space-between; margin-bottom: 12px; }
+input { background: #16121f; color: #fff; padding: 0 10px; min-width: 0; width: 100%; }
+#status { color: #c7bed6; min-height: 40px; line-height: 1.45; margin: 12px 2px 0; }
